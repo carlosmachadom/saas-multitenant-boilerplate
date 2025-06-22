@@ -1,0 +1,47 @@
+services:
+  nginx:
+    image: nginx:1.25-alpine
+    ports:
+      - "${HOST_NGINX}:${PORT_NGINX}"
+    depends_on:
+      - web-admin
+      - web-tenant
+      - api
+  web-admin:
+    build:
+      context: .
+      args:
+        APP: web-admin
+    ports:
+      - "${PORT_ADMIN}"
+    restart: unless-stopped
+    depends_on:
+      - api
+  web-tenant:
+    build:
+      context: .
+      args:
+        APP: web-tenant
+    ports:
+      - "${PORT_TENANT}"
+    restart: unless-stopped
+    depends_on:
+      - api
+  api:
+    build:
+      context: .
+      args:
+        APP: api
+    ports:
+      - "${PORT_API}"
+    restart: unless-stopped
+    depends_on:
+      - db
+  db:
+    image: postgres:16-alpine
+    container_name: autovendi-db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

@@ -1,0 +1,89 @@
+# ----------------------------------------
+# 🐳 Node.js Artifacts
+# ----------------------------------------
+# node_modules - NECESARIO PARA DOCKER BUILD
+# dist - NECESARIO PARA DOCKER BUILD
+npm-debug.log
+pnpm-debug.log
+yarn-debug.log
+yarn-error.log
+package-lock.json
+turbo.lock
+.next
+out
+# dist
+coverage
+
+# ----------------------------------------
+# 🐳 Vitest & Vite Specific Artifacts
+# ----------------------------------------
+# Vitest cache (cuando usas enableThreads: true)
+node_modules/.vitest
+# Vitest default cache location (if configured)
+vitest-cache
+# Coverage report
+coverage/
+
+# Vite cache
+node_modules/.vite
+
+# ----------------------------------------
+# 🐳 Monorepo Ignored Folders
+# ----------------------------------------
+# apps/**/node_modules - NECESARIO PARA DOCKER BUILD
+apps/**/.next
+# apps/**/dist - NECESARIO PARA DOCKER BUILD
+apps/**/coverage
+apps/**/.turbo
+apps/**/.vitest
+apps/**/.vite
+
+packages/**/node_modules
+packages/**/dist
+packages/**/coverage
+packages/**/.vitest
+packages/**/.vite
+
+# ----------------------------------------
+# 🐳 General System / Editor / Misc
+# ----------------------------------------
+env/
+.env
+.env.*.local
+.env.local
+.DS_Store
+*.pem
+*.log
+*.swp
+*.swo
+.idea
+.vscode
+*.iml
+
+# ----------------------------------------
+# 🐳 Docker Compose / Dockerfiles
+# ----------------------------------------
+Dockerfile
+Dockerfile.dev
+docker-compose.yml
+docker-compose.*.yml
+
+# ----------------------------------------
+# 🐳 Test Artifacts
+# ----------------------------------------
+test-results
+jest.config.js
+jest.setup.js
+jest-e2e.json
+
+# ----------------------------------------
+# 🐳 Git folders
+# ----------------------------------------
+.git
+.gitignore
+
+# ----------------------------------------
+# 🐳 ✅ Explicit Inclusions
+# ----------------------------------------
+# 🚫 NO ignorar turbo.json -- necesario para TurboRepo
+# turbo.json

@@ -1,19 +1,40 @@
 {
-  "name": "shadcn-ui-monorepo",
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "auto-vendi",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "docker:build": "pnpm turbo run docker:build --filter=apps/**",
+    "docker:dev": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build",
+    "docker:prod": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build -d",
+    "test": "turbo test",
+    "test:watch": "turbo test:watch",
+    "test:ci": "turbo test:ci",
+    "test:coverage": "turbo test:coverage"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "6.6.3",
+    "@testing-library/react": "16.3.0",
+    "@types/jest": "29.5.4",
+    "@vitejs/plugin-react": "^4.5.1",
+    "@vitest/coverage-v8": "^3.2.2",
+    "@vitest/ui": "^3.2.2",
     "@workspace/eslint-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
+    "happy-dom": "^17.6.3",
+    "jest": "29.7.0",
+    "jest-environment-jsdom": "29.7.0",
+    "jsdom": "^26.1.0",
+    "msw": "2.9.0",
     "prettier": "^3.5.1",
-    "turbo": "^2.4.2",
-    "typescript": "5.7.3"
+    "ts-jest": "29.3.4",
+    "turbo": "^2.1.3",
+    "typescript": "5.7.3",
+    "vitest": "^3.2.2"
   },
   "packageManager": "pnpm@10.4.1",
   "engines": {
