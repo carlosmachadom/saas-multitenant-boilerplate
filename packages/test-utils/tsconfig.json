@@ -1,0 +1,15 @@
+{
+  "extends": "@workspace/typescript-config/base.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "types": ["vitest", "node", "react", "react-dom", "@testing-library/jest-dom"],
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "noEmit": true,
+  },
+  "include": ["src", "vitest.config.ts", "__tests__/**/*.{ts,tsx}", "vitest.setup.ts"],
+  "exclude": ["node_modules"]
+}

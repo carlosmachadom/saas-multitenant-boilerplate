@@ -4,8 +4,9 @@
     "baseUrl": ".",
     "paths": {
       "@workspace/ui/*": ["./src/*"]
-    }
+    },
+    "types": ["jest", "@testing-library/jest-dom"],
   },
-  "include": ["."],
+  "include": [".", "src/types/*.d.ts"],
   "exclude": ["node_modules", "dist"]
 }
