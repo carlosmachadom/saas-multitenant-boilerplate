@@ -1,0 +1,37 @@
+FROM node:20-alpine
+
+RUN apk update && apk add --no-cache libc6-compat
+RUN npm install -g pnpm@10.4.1 turbo@2.1.3
+
+WORKDIR /app
+
+# Copy root manifests and workspace configuration
+COPY package.json pnpm-lock.yaml ./
+COPY pnpm-workspace.yaml ./ 
+
+# Copy workspace directories (containing their package.json files)
+# This ensures pnpm can discover all workspaces and their dependencies.
+COPY packages/ ./packages/
+COPY apps/ ./apps/
+
+# Install dependencies for the entire monorepo
+# pnpm will use pnpm-workspace.yaml to find all packages.
+RUN pnpm install --frozen-lockfile
+
+# Copy the rest of the application code
+# This layer is separate from dependency installation for better caching.
+# If only code changes (not dependencies), pnpm install won't re-run.
+COPY . .
+
+# Construir el paquete database antes de iniciar la API
+# Dependencies for @workspace/database should now be installed.
+RUN pnpm --filter @workspace/database build
+
+# Build only the backend app for faster start (optional in dev)
+ARG APP
+WORKDIR /app/apps/$APP
+
+EXPOSE 3002
+
+# Start the app in development mode
+CMD ["pnpm", "start:dev"]
