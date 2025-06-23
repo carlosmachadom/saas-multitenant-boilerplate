@@ -27,11 +27,11 @@ COPY . .
 # Dependencies for @workspace/database should now be installed.
 RUN pnpm --filter @workspace/database build
 
-# Build only the backend app for faster start (optional in dev)
-ARG APP
-WORKDIR /app/apps/$APP
+# The WORKDIR remains /app (the monorepo root)
 
 EXPOSE 3002
 
-# Start the app in development mode
-CMD ["pnpm", "start:dev"]
+# Start the dev processes for the API and its dependencies (like @workspace/database)
+# in parallel. Turborepo will manage the watch modes.
+# The "..." syntax in the filter means "and all its dependencies".
+CMD ["pnpm", "dev:api"]

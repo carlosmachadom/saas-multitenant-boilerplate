@@ -55,9 +55,12 @@ COPY --from=base /app/out/json/ .
 RUN npm install -g pnpm@10.4.1
 RUN pnpm install --prod --frozen-lockfile
 
-# Copiar el código compilado
+# Copiar el código compilado de la aplicación principal
 ARG APP=api
 COPY --from=builder /app/apps/$APP/dist ./apps/$APP/dist
+
+# Copiar el código compilado de las dependencias del workspace
+COPY --from=builder /app/packages/database/dist ./packages/database/dist
 
 # Verificar que las dependencias de NestJS estén instaladas
 RUN echo "Verificando dependencias NestJS:" && ls -la node_modules/@nestjs || echo "NestJS modules no encontrados"
