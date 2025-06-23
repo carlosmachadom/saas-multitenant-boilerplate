@@ -11,4 +11,4 @@ RUN pnpm install --frozen-lockfile
 COPY . .
 
 EXPOSE 3001
-CMD ["pnpm", "dev"]
+CMD ["pnpm", "dev:web-tenant"]
