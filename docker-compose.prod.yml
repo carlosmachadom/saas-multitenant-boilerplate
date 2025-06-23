@@ -36,3 +36,8 @@ services:
     env_file:
       - env/database/.env
       - env/database/.env.production.local
+    volumes:
+      - db-data-prod:/var/lib/postgresql/data
+
+volumes:
+  db-data-prod:

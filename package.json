@@ -6,6 +6,9 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
+    "dev:web-admin": "turbo dev --filter=web-admin...",
+    "dev:web-tenant": "turbo dev --filter=web-tenant...",
+    "dev:api": "turbo dev --filter=api...",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "docker:build": "pnpm turbo run docker:build --filter=apps/**",

@@ -39,3 +39,8 @@ services:
     env_file:
       - env/database/.env
       - env/database/.env.development.local
+    volumes:
+      - db-data-dev:/var/lib/postgresql/data
+
+volumes:
+  db-data-dev:
