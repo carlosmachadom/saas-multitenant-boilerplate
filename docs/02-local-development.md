@@ -92,10 +92,10 @@ Si solo necesitas trabajar en una parte específica del proyecto (por ejemplo, l
 
 ```bash
 # Ejecutar solo la API en modo watch
-pnpm --filter @workspace/api dev
+pnpm dev:api
 
 # Ejecutar solo la web de administración
-pnpm --filter @workspace/web-admin dev
+pnpm dev:web-admin
 ```
 
 **Nota:** Si ejecutas un servicio individualmente, asegúrate de que los servicios de los que depende (como la base de datos) estén corriendo.

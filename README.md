@@ -1,21 +1,18 @@
-# Auto-Vendi Monorepo
+# SaaS Multi-Tenant Boilerplate
 
-¡Bienvenido a Auto-Vendi! Este es un monorepo que contiene el ecosistema completo de la aplicación, gestionado con Turborepo y pnpm.
-
-## ¿Qué es Auto-Vendi?
-
-**Auto-Vendi** es una plataforma **SaaS B2B** para la **automatización de procesos comerciales en PYMEs latinoamericanas**, iniciando con un **copiloto de cotización inteligente vía WhatsApp**. La aplicación permite a los negocios gestionar productos, automatizar cotizaciones y coordinar flujos internos y externos con herramientas como **n8n**.
+Este es un boilerplate de nivel de producción diseñado para acelerar el desarrollo de aplicaciones **SaaS B2B Multi-Tenant**. Proporciona una base sólida y escalable, permitiéndote enfocarte directamente en la lógica de negocio de tu MVP.
 
 ---
 
 ## Características Principales
 
--   **Arquitectura Monorepo:** Código centralizado y gestionado eficientemente con Turborepo.
--   **Separación por Contextos:** Interfaces dedicadas para administradores (`web-admin`) y empresas (`web-tenant`).
--   **Backend Desacoplado:** API modular construida con NestJS.
--   **Multitenancy Real:** Aislamiento de datos por empresa usando una estrategia de schema-per-tenant en PostgreSQL.
--   **Automatización Low-Code:** Orquestación de flujos de trabajo con n8n.
--   **Infraestructura como Código:** Entorno de desarrollo y producción consistentes y reproducibles con Docker.
+-   **Arquitectura Monorepo:** Código centralizado y gestionado eficientemente con **Turborepo** y **pnpm workspaces**.
+-   **Multi-Tenancy Real:** Aislamiento de datos por cliente usando una estrategia de **schema-per-tenant** en PostgreSQL, lista para escalar.
+-   **Backend Robusto:** API modular construida con **NestJS**, siguiendo las mejores prácticas de diseño de software.
+-   **Frontend Moderno:** Aplicaciones desacopladas para administradores (`web-admin`) y clientes (`web-tenant`) construidas con **Next.js 14 (App Router)**.
+-   **Infraestructura como Código:** Entorno de desarrollo y producción consistentes y reproducibles con **Docker** y **Docker Compose**.
+-   **Automatización y CI/CD:** Flujos de trabajo pre-configurados con **GitHub Actions** para integración y despliegue continuo.
+-   **Bases para Observabilidad:** Preparado para integrar herramientas de monitoreo, logging y seguimiento de errores.
 
 ---
 
@@ -48,16 +45,16 @@ Sigue estos pasos para levantar el entorno de desarrollo local.
 ### Requisitos Previos
 
 Asegúrate de tener instalados los siguientes programas:
--   [Node.js](https://nodejs.org/) (v18 o superior)
+-   [Node.js](https://nodejs.org/) (v20 o superior)
 -   [pnpm](https://pnpm.io/installation)
 -   [Docker](https://docs.docker.com/get-docker/) y Docker Compose
 
 ### Pasos de Instalación
 
-1.  **Clona el repositorio** e instálalo:
+1.  **Clona el repositorio**:
     ```bash
-    git clone <URL-DEL-REPOSITORIO>
-    cd auto-vendi
+    git clone <URL-DE-TU-REPOSITORIO-BOILERPLATE>
+    cd saas-multitenant-boilerplate
     pnpm install
     ```
 
@@ -91,4 +88,4 @@ Una vez que los contenedores estén corriendo, podrás acceder a los servicios e
 Para una visión más profunda del proyecto, consulta la siguiente documentación:
 
 -   **[Arquitectura y Guías](./docs/):** Documentación detallada sobre la arquitectura, decisiones técnicas y guías de desarrollo.
--   **[Cómo Contribuir](./CONTRIBUTING.md):** Guías para contribuir a este proyecto.
+-   **[Cómo Contribuir](./CONTRIBUTING.md):** Guías para contribuir y mejorar este boilerplate.
