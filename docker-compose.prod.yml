@@ -8,8 +8,10 @@ services:
       dockerfile: apps/web-admin/Dockerfile
     command: node server.js
     env_file:
-      - env/web-admin/.env
-      - env/web-admin/.env.production.local
+      - path: env/web-admin/.env
+        required: true
+      - path: env/web-admin/.env.production.local
+        required: true
     volumes: []
 
   web-tenant:
@@ -17,8 +19,10 @@ services:
       dockerfile: apps/web-tenant/Dockerfile
     command: node server.js
     env_file:
-      - env/web-tenant/.env
-      - env/web-tenant/.env.production.local
+      - path: env/web-tenant/.env
+        required: true
+      - path: env/web-tenant/.env.production.local
+        required: true
     volumes: []
 
   api:
@@ -26,16 +30,22 @@ services:
       dockerfile: apps/api/Dockerfile
     command: node dist/main
     env_file:
-      - env/api/.env
-      - env/api/.env.production.local
-      - env/database/.env
-      - env/database/.env.production.local
+      - path: env/api/.env
+        required: true
+      - path: env/api/.env.production.local
+        required: true
+      - path: env/database/.env
+        required: true
+      - path: env/database/.env.production.local
+        required: true
     volumes: []
-
+    
   db:
     env_file:
-      - env/database/.env
-      - env/database/.env.production.local
+      - path: env/database/.env
+        required: true
+      - path: env/database/.env.production.local
+        required: true
     volumes:
       - db-data-prod:/var/lib/postgresql/data
 

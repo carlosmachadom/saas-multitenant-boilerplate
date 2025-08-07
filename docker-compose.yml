@@ -36,8 +36,22 @@ services:
       - "${PORT_API}"
     restart: unless-stopped
     depends_on:
-      - db
+      db-init:
+        condition: service_completed_successfully
+  db-init:
+    build:
+      context: .
+    depends_on:
+      db:
+        condition: service_healthy
   db:
     image: postgres:16-alpine
     container_name: boilerplate-db
-
+    environment:
+    - DB_USERNAME=${DB_USERNAME:-admin}
+    - DB_NAME=${DB_NAME:-db_dev}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d ${DB_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5

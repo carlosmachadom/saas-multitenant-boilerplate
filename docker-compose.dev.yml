@@ -8,8 +8,10 @@ services:
       dockerfile: apps/web-admin/Dockerfile.dev
     command: pnpm --filter web-admin dev
     env_file:
-      - env/web-admin/.env
-      - env/web-admin/.env.development.local
+      - path: env/web-admin/.env
+        required: true
+      - path: env/web-admin/.env.development.local
+        required: true
     volumes:
       - .:/app
   web-tenant:
@@ -17,19 +19,40 @@ services:
       dockerfile: apps/web-tenant/Dockerfile.dev
     command: pnpm --filter web-tenant dev
     env_file:
-      - env/web-tenant/.env
-      - env/web-tenant/.env.development.local
+      - path: env/web-tenant/.env
+        required: true
+      - path: env/web-tenant/.env.development.local
+        required: true
     volumes:
       - .:/app
+
   api:
     build:
       dockerfile: apps/api/Dockerfile.dev
     command: pnpm --filter api dev
     env_file:
-      - env/api/.env
-      - env/api/.env.development.local
-      - env/database/.env
-      - env/database/.env.development.local
+      - path: env/api/.env
+        required: true
+      - path: env/api/.env.development.local
+        required: true
+      - path: env/database/.env
+        required: true
+      - path: env/database/.env.development.local
+        required: true
+    volumes:
+      - .:/app
+
+  db-init:
+    build:
+      dockerfile: packages/database/docker/Dockerfile.init
+    command: pnpm --filter @workspace/database db:init
+    env_file:
+      - path: env/db-init/.env
+        required: true
+      - path: env/database/.env
+        required: true
+      - path: env/database/.env.development.local
+        required: true
     volumes:
       - .:/app
 
@@ -37,10 +60,7 @@ services:
     ports:
       - "${DB_PORT}:${DB_PORT}"
     env_file:
-      - env/database/.env
-      - env/database/.env.development.local
-    volumes:
-      - db-data-dev:/var/lib/postgresql/data
-
-volumes:
-  db-data-dev:
+      - path: env/database/.env
+        required: true
+      - path: env/database/.env.development.local
+        required: true
