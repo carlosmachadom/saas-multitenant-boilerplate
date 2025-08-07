@@ -1,0 +1,30 @@
+import { Profile } from '@workspace/auth-core';
+import {
+  Entity,
+  PrimaryColumn,
+  Column,
+  OneToOne,
+  JoinColumn
+} from 'typeorm';
+import { UserEntity } from './user.entity';
+
+@Entity({ name: 'user_profiles' })
+export class ProfileEntity implements Profile {
+  @PrimaryColumn('uuid', { name: 'user_id' })
+  userId: string;
+
+  @Column('varchar', { name: 'full_name', nullable: true, length: 255 })
+  fullName?: string;
+
+  @Column('varchar', { nullable: true, length: 20 })
+  phone?: string;
+
+  @Column('varchar', { nullable: true, length: 100 })
+  position?: string;
+
+  // --- Relaciones ---
+
+  @OneToOne(() => UserEntity, (user) => user.profile)
+  @JoinColumn({ name: 'user_id' })
+  user: UserEntity;
+}

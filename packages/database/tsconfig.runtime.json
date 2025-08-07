@@ -1,0 +1,23 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist/runtime",
+    "rootDir": "./src",
+    "baseUrl": ".",
+    "paths": {
+      "@core/*": ["src/core/*"],
+      "@runtime/*": ["src/runtime/*"],
+      "@database/*": ["src/*"]
+    }
+  },
+  "include": [
+    "src/core/**/*",
+    "src/runtime/**/*",
+    "src/index.ts"
+  ],
+  "exclude": [
+    "src/devops/**/*",
+    "**/*.test.ts",
+    "**/*.spec.ts"
+  ]
+}

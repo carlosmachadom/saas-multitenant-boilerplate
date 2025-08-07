@@ -1,0 +1,26 @@
+[
+  {
+    "id": "b6e5f4c3-2d1a-4c5e-8b9a-7c6d5e4f3a2b",
+    "code": "USER_LOGOUT",
+    "label": "El usuario cerró la sesión.",
+    "internalOnly": false
+  },
+  {
+    "id": "c7d8e9f0-1a2b-4c3d-8e9f-0a1b2c3d4e5f",
+    "code": "PASSWORD_CHANGED",
+    "label": "La contraseña del usuario fue cambiada.",
+    "internalOnly": true
+  },
+  {
+    "id": "d8e9f0a1-2b3c-4d5e-9f0a-1b2c3d4e5f6a",
+    "code": "SESSION_EXPIRED",
+    "label": "La sesión del usuario ha expirado.",
+    "internalOnly": true
+  },
+  {
+    "id": "e9f0a1b2-3c4d-5e6f-0a1b-2c3d4e5f6a7b",
+    "code": "ADMIN_ACTION",
+    "label": "La sesión fue revocada por un administrador.",
+    "internalOnly": true
+  }
+]

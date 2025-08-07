@@ -6,24 +6,47 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
+    "build:runtime": "tsc --project tsconfig.runtime.json",
+    "build:devops": "tsc --project tsconfig.devops.json",
     "clean": "rimraf dist",
     "dev": "tsc --watch",
     "lint": "eslint src --ext .ts",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "--- RUNTIME (Config externa) ---": "----------------------------------------",
+    "start": "node dist/index.js",
+    "--- Migrations (dev usage - dotenv-cli) ---": "----------------------------------------",
+    "db:migration:generate": "bash scripts/generate-migration.sh",
+    "db:migration:run": "bash scripts/run-migrations.sh",
+    "--- Seeding (dev usage - dotenv-cli) ---": "----------------------------------------",
+    "db:seed": "bash scripts/seed-database.sh",
+    "--- INIT (prod usage - Docker env vars) ---": "----------------------------------------",
+    "db:init": "bash scripts/init-database.sh"
   },
   "dependencies": {
+    "@workspace/auth-core": "workspace:*",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.3.1",
     "pg": "^8.11.3",
+    "reflect-metadata": "^0.2.2",
     "typeorm": "^0.3.17",
-    "dotenv": "^16.3.1"
+    "uuid": "^11.1.0",
+    "zod": "^4.0.5"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^20.11.20",
+    "@types/uuid": "^10.0.0",
     "@workspace/eslint-config": "workspace:*",
-    "@workspace/typescript-config": "workspace:*",
     "@workspace/test-utils": "workspace:*",
-    "@types/node": "^20.10.4",
+    "@workspace/typescript-config": "workspace:*",
+    "commander": "^12.0.0",
+    "dotenv-cli": "^8.0.0",
     "rimraf": "^5.0.5",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "tsx": "^4.7.0",
     "typescript": "^5.3.3"
   }
 }

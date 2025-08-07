@@ -1,0 +1,14 @@
+[
+  {
+    "id": "a7f6e2b1-3c4d-4e5f-8a9b-1c2d3e4f5b6a",
+    "name": "SUPER_ADMIN",
+    "description": "Administrador global de la plataforma con todos los permisos.",
+    "permissionCodes": [
+      "platform:tenants:manage",
+      "platform:users:manage",
+      "platform:roles:manage",
+      "platform:logs:read",
+      "platform:settings:manage"
+    ]
+  }
+]

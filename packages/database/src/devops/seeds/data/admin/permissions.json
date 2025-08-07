@@ -1,0 +1,27 @@
+[
+  {
+    "id": "f8b0c7e4-1a2b-4e2d-9c3a-1e9f8d7c6b5a",
+    "code": "platform:tenants:manage",
+    "description": "Permite crear, leer, actualizar y eliminar tenants."
+  },
+  {
+    "id": "d7a2c8b3-5e4f-4a1c-8b2d-3c4e5f6a7b8c",
+    "code": "platform:users:manage",
+    "description": "Permite gestionar todos los usuarios de la plataforma."
+  },
+  {
+    "id": "e3c2b1a4-7d6e-4f5a-9b8c-2d3e4f5a6b7c",
+    "code": "platform:roles:manage",
+    "description": "Permite gestionar los roles de la plataforma."
+  },
+  {
+    "id": "b2d3e4f5-6a7b-4c8d-9e1f-2a3b4c5d6e7f",
+    "code": "platform:logs:read",
+    "description": "Permite leer los logs globales del sistema."
+  },
+  {
+    "id": "c5d6e7f8-9a1b-4c2d-8e3f-5a6b7c8d9e1f",
+    "code": "platform:settings:manage",
+    "description": "Permite gestionar la configuración global de la plataforma."
+  }
+]
