@@ -13,7 +13,6 @@ erDiagram
     string email
     string password
     boolean is_active
-    boolean is_service_account
     datetime created_at
     datetime updated_at
     datetime deleted_at
@@ -82,16 +81,7 @@ erDiagram
     boolean internal_only
   }
 
-  API_KEY {
-    uuid id PK
-    string name
-    string key_hash
-    uuid user_id FK
-    boolean is_active
-    datetime created_at
-    datetime last_used_at
-    string[] scopes
-  }
+
 
   USER ||--o{ USER_ROLE : has
   ROLE ||--o{ USER_ROLE : contains
@@ -102,15 +92,14 @@ erDiagram
   SESSION ||--|| REFRESH_TOKEN : has
   REFRESH_TOKEN ||--o{ TOKEN_BLACKLIST : blacklisted
   TOKEN_BLACKLIST ||--|| TOKEN_REVOCATION_REASON : reason
-  USER ||--o{ API_KEY : provides
 ```
 
 ## 2. Análisis Detallado del Esquema
 
 ### Tablas de Identidad y Roles (RBAC)
 
--   **USER**: Es la entidad central. Almacena las credenciales de inicio de sesión. `is_service_account` es clave para diferenciar usuarios humanos de cuentas para sistemas (como n8n).
-    -   *Relación TypeORM*: `OneToOne` con `USER_PROFILE`, `OneToMany` con `SESSION` y `API_KEY`, `ManyToMany` con `ROLE`.
+-   **USER**: Es la entidad central. Almacena las credenciales de inicio de sesión.
+    -   *Relación TypeORM*: `OneToOne` con `USER_PROFILE`, `OneToMany` con `SESSION`, `ManyToMany` con `ROLE`.
 -   **USER_PROFILE**: Contiene información personal no sensible, separada de las credenciales para mayor seguridad y organización.
     -   *Relación TypeORM*: `OneToOne` con `USER`.
 -   **ROLE**: Define un conjunto de responsabilidades (ej. "Administrador", "Editor").
@@ -127,10 +116,7 @@ erDiagram
     -   *Relación TypeORM*: `OneToOne` con `SESSION`.
 -   **TOKEN_BLACKLIST** y **TOKEN_REVOCATION_REASON**: Un mecanismo de seguridad crucial. Permite invalidar tokens de refresco de forma explícita (ej. al cerrar sesión, cambiar contraseña) y registrar por qué se hizo.
 
-### Tablas de Acceso Programático
 
--   **API_KEY**: Permite a sistemas externos (como n8n, scripts, u otras APIs) autenticarse de forma segura. Se almacena un `hash` de la clave, nunca la clave en texto plano. El campo `scopes` actúa como un conjunto de permisos específicos para esa clave, limitando su alcance.
-    -   *Relación TypeORM*: `ManyToOne` con `USER` (una cuenta de servicio).
 
 ## 3. Flujo de Inicio de Sesión (Login)
 
