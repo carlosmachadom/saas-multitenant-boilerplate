@@ -10,5 +10,9 @@ RUN pnpm install --frozen-lockfile
 
 COPY . .
 
+# Build the target app and all of its dependencies. Turborepo will
+# determine the correct build order.
+RUN pnpm --filter @workspace/web-tenant... build
+
 EXPOSE 3001
 CMD ["pnpm", "dev:web-tenant"]

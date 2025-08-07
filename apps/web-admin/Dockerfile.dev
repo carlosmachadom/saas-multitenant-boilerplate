@@ -10,6 +10,10 @@ RUN pnpm install --frozen-lockfile
 
 COPY . .
 
+# Build the target app and all of its dependencies. Turborepo will
+# determine the correct build order.
+RUN pnpm --filter @workspace/web-admin... build
+
 EXPOSE 3000
 
 CMD ["pnpm", "dev:web-admin"]

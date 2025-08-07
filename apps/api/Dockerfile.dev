@@ -23,9 +23,9 @@ RUN pnpm install --frozen-lockfile
 # If only code changes (not dependencies), pnpm install won't re-run.
 COPY . .
 
-# Construir el paquete database antes de iniciar la API
-# Dependencies for @workspace/database should now be installed.
-RUN pnpm --filter @workspace/database build
+# Build the target app and all of its dependencies. Turborepo will
+# determine the correct build order (e.g., auth-core -> database -> api).
+RUN pnpm --filter @workspace/api... build
 
 # The WORKDIR remains /app (the monorepo root)
 
