@@ -21,8 +21,6 @@ export class DatabaseInitializer {
         password: config.password,
         database: config.database,
         schema: 'admin',
-        synchronize: false,
-        logging: true,
       }).initialize();
       
       // Crear esquema admin si no existe
@@ -32,6 +30,9 @@ export class DatabaseInitializer {
       } else {
         console.log('ℹ️ Esquema admin ya existe');
       }
+      
+      // Setear el search_path para que las migraciones se ejecuten en el esquema correcto
+      await dataSource.query(`SET search_path TO "admin"`);
       
       // Ejecutar migraciones
       console.log('📦 Ejecutando migraciones admin...');
@@ -71,8 +72,6 @@ export class DatabaseInitializer {
         password: config.password,
         database: config.database,
         schema: schemaName,
-        synchronize: false,
-        logging: true,
       }).initialize();
       
       // Crear esquema tenant si no existe
@@ -82,6 +81,9 @@ export class DatabaseInitializer {
       } else {
         console.log(`ℹ️ Esquema ${schemaName} ya existe`);
       }
+      
+      // Setear el search_path para que las migraciones se ejecuten en el esquema correcto
+      await dataSource.query(`SET search_path TO "${schemaName}"`);
       
       // Ejecutar migraciones
       console.log(`📦 Ejecutando migraciones tenant para ${schemaName}...`);
@@ -97,10 +99,6 @@ export class DatabaseInitializer {
         } else {
           console.log(`⏭️ Seeds para tenant template omitidos por configuración`);
         }
-      } else {
-        console.log(`🌱 Ejecutando seeds para tenant ${schemaName}...`);
-        await this.runTenantSeeds(dataSource, schemaName);
-        console.log(`✅ Seeds para tenant ${schemaName} completados`);
       }
       
       await dataSource.destroy();

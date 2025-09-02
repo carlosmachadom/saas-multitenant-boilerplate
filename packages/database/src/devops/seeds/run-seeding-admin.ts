@@ -40,11 +40,5 @@ export async function main(dataSource: DataSource) {
     // Re-lanzar el error es crucial para que el script de shell (run-initialization.sh) falle
     throw error;
 
-  } finally {
-    // Destruir la conexión solo si este script la inicializó
-    if (dataSource.isInitialized) {
-      await dataSource.destroy();
-      console.log('Conexión a la base de datos de administración cerrada.');
-    }
   }
 }
