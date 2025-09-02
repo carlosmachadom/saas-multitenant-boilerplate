@@ -1,4 +1,4 @@
-import { Session } from '@workspace/auth-core';
+import { Session } from '@workspace/contracts';
 import {
   Entity,
   PrimaryColumn,

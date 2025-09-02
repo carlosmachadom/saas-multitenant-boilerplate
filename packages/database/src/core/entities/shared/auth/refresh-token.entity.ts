@@ -1,4 +1,4 @@
-import { RefreshToken } from '@workspace/auth-core';
+import { RefreshToken } from '@workspace/contracts';
 import {
   Entity,
   PrimaryColumn,

@@ -17,15 +17,15 @@
     "--- RUNTIME (Config externa) ---": "----------------------------------------",
     "start": "node dist/index.js",
     "--- Migrations (dev usage - dotenv-cli) ---": "----------------------------------------",
-    "db:migration:generate": "bash scripts/generate-migration.sh",
-    "db:migration:run": "bash scripts/run-migrations.sh",
+    "db:migration:generate": "sh scripts/generate-migration.sh",
+    "db:migration:run": "sh scripts/run-migrations.sh",
     "--- Seeding (dev usage - dotenv-cli) ---": "----------------------------------------",
-    "db:seed": "bash scripts/seed-database.sh",
+    "db:seed": "sh scripts/seed-database.sh",
     "--- INIT (prod usage - Docker env vars) ---": "----------------------------------------",
-    "db:init": "bash scripts/init-database.sh"
+    "db:init": "sh scripts/init-database.sh"
   },
   "dependencies": {
-    "@workspace/auth-core": "workspace:*",
+    "@workspace/contracts": "workspace:*",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.3.1",
     "pg": "^8.11.3",

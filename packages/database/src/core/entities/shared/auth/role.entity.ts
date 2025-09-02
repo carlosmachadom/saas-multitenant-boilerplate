@@ -1,4 +1,4 @@
-import { Role } from '@workspace/auth-core';
+import { Role } from '@workspace/contracts';
 import {
   Entity,
   PrimaryColumn,

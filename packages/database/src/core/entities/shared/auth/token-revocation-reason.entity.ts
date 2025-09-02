@@ -1,4 +1,4 @@
-import { TokenRevocationReason } from '@workspace/auth-core';
+import { TokenRevocationReason } from '@workspace/contracts';
 import { Entity, PrimaryColumn, Column } from 'typeorm';
 
 @Entity({ name: 'token_revocation_reasons' })

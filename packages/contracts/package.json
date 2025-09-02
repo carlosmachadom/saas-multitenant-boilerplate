@@ -1,7 +1,7 @@
 {
-  "name": "@workspace/auth-core",
+  "name": "@workspace/contracts",
   "version": "0.0.1",
-  "description": "Core package for authentication and authorization contracts",
+  "description": "Core package for apps shared and independent contracts",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {

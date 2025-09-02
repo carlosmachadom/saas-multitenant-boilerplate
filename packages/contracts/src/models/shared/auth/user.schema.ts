@@ -4,7 +4,7 @@ import {
   TimestampsSchema,
   SoftDeleteSchema,
   StatusSchema,
-} from '../base';
+} from '../../../base';
 
 /**
  * @description Esquema para la entidad USER.

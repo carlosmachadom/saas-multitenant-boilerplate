@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { IdentitySchema } from '../base';
+import { IdentitySchema } from '../../../base';
 
 /**
  * @description Esquema para la entidad ROLE.

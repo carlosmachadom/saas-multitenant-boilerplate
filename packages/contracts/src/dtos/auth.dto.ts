@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { UserSchema } from '../models';
+import { UserSchema } from '../models/shared/auth';
 
 /**
  * @description DTO para el registro de un nuevo usuario.

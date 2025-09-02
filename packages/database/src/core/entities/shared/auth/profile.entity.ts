@@ -1,4 +1,4 @@
-import { Profile } from '@workspace/auth-core';
+import { Profile } from '@workspace/contracts';
 import {
   Entity,
   PrimaryColumn,

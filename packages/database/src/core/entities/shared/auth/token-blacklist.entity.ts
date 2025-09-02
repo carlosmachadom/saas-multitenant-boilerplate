@@ -1,4 +1,4 @@
-import { TokenBlacklist } from '@workspace/auth-core';
+import { TokenBlacklist } from '@workspace/contracts';
 import {
   Entity,
   PrimaryColumn,

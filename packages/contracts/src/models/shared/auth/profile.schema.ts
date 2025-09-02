@@ -8,8 +8,6 @@ import { z } from 'zod';
 export const ProfileSchema = z.object({
   userId: z.string().uuid(),
   fullName: z.string().optional(),
-  phone: z.string().optional(),
-  position: z.string().optional(),
 });
 
 export type Profile = z.infer<typeof ProfileSchema>;

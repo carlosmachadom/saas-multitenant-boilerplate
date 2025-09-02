@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { IdentitySchema, StatusSchema } from '../base';
+import { IdentitySchema, StatusSchema } from '../../../base';
 
 /**
  * @description Esquema para la entidad SESSION.
