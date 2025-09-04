@@ -22,9 +22,8 @@ export class TenantSeeder {
         logging: true,
       }).initialize();
       
-      // Placeholder para seeds de tenant - se implementarán según necesidades
-      console.log(`ℹ️ Seeds de tenant para ${tenantSchema} - implementación pendiente`);
-      console.log('✅ Seeds de tenant ejecutados exitosamente');
+      const { main } = await import("../seeds/seed-tenant.js");
+      await main(dataSource);
       
       await dataSource.destroy();
     } catch (error) {

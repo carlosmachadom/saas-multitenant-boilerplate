@@ -23,8 +23,7 @@ export class AdminSeeder {
         logging: true,
       }).initialize();
 
-      // Importar y ejecutar el seeding existente
-      const { main } = await import("../seeds/run-seeding-admin.js");
+      const { main } = await import("../seeds/seed-admin.js");
       await main(dataSource);
 
       await dataSource.destroy();
