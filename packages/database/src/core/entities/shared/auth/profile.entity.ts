@@ -16,12 +16,6 @@ export class ProfileEntity implements Profile {
   @Column('varchar', { name: 'full_name', nullable: true, length: 255 })
   fullName?: string;
 
-  @Column('varchar', { nullable: true, length: 20 })
-  phone?: string;
-
-  @Column('varchar', { nullable: true, length: 100 })
-  position?: string;
-
   // --- Relaciones ---
 
   @OneToOne(() => UserEntity, (user) => user.profile)
