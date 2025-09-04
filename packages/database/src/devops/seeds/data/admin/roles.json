@@ -4,11 +4,28 @@
     "name": "SUPER_ADMIN",
     "description": "Administrador global de la plataforma con todos los permisos.",
     "permissionCodes": [
-      "platform:tenants:manage",
-      "platform:users:manage",
-      "platform:roles:manage",
-      "platform:logs:read",
-      "platform:settings:manage"
+      "users:access",
+      "users:create",
+      "users:read",
+      "users:update",
+      "users:delete",
+      "users:manage",
+      "roles:access",
+      "roles:create",
+      "roles:read",
+      "roles:update",
+      "roles:delete",
+      "roles:manage",
+      "sessions:read",
+      "sessions:terminate",
+      "audit:read",
+      "audit:export",
+      "settings:update",
+      "profile:read",
+      "profile:update",
+      "password:change",
+      "sessions:read:own",
+      "sessions:terminate:own"
     ]
   }
 ]

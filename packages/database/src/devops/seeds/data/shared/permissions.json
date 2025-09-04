@@ -1,0 +1,136 @@
+[
+  {
+    "id": "0e6d58b5-79f5-4a85-9b47-d63f6e3b548f",
+    "code": "users:access",
+    "description": "Permite acceder al módulo de usuarios.",
+    "permissionTypeCode": "FEATURE"
+  },
+  {
+    "id": "8b1c43a2-0ac6-4f6d-84fc-53732b87e95b",
+    "code": "users:create",
+    "description": "Permite crear usuarios.",
+    "permissionTypeCode": "CRUD"
+  },
+  {
+    "id": "f39f712b-5e7e-46ab-9e3d-4cdbb3c6a6fc",
+    "code": "users:read",
+    "description": "Permite leer información de usuarios.",
+    "permissionTypeCode": "CRUD"
+  },
+  {
+    "id": "b2b1a6f4-4c8d-45b8-9a77-48213dff0191",
+    "code": "users:update",
+    "description": "Permite actualizar información de usuarios.",
+    "permissionTypeCode": "CRUD"
+  },
+  {
+    "id": "e5e5df71-2b71-45f8-a342-0466f3c295cc",
+    "code": "users:delete",
+    "description": "Permite eliminar usuarios.",
+    "permissionTypeCode": "CRUD"
+  },
+  
+  {
+    "id": "a1b2c3d4-e5f6-4a5b-8c7d-9e0f1a2b3c4d",
+    "code": "profile:read",
+    "description": "Permite ver el perfil propio del usuario.",
+    "permissionTypeCode": "SELF"
+  },
+  {
+    "id": "b2c3d4e5-f6a7-4b5c-8d9e-0f1a2b3c4d5e",
+    "code": "profile:update",
+    "description": "Permite actualizar la información del perfil propio.",
+    "permissionTypeCode": "SELF"
+  },
+  {
+    "id": "c3d4e5f6-a7b8-4c5d-9e0f-1a2b3c4d5e6f",
+    "code": "password:change",
+    "description": "Permite cambiar la contraseña propia.",
+    "permissionTypeCode": "SELF"
+  },
+  
+  {
+    "id": "d4e5f6a7-b8c9-4d5e-9f0a-1b2c3d4e5f6a",
+    "code": "sessions:read:own",
+    "description": "Permite ver las sesiones propias del usuario.",
+    "permissionTypeCode": "SELF"
+  },
+  {
+    "id": "f6a7b8c9-d0e1-4f5a-8b2c-3d4e5f6a7b8c",
+    "code": "sessions:terminate:own",
+    "description": "Permite cerrar sesiones propias.",
+    "permissionTypeCode": "SELF"
+  },
+  {
+    "id": "e8c8de17-4c39-4709-b17a-3ff84c514c6c",
+    "code": "users:manage",
+    "description": "Permite gestionar todos los aspectos de usuarios.",
+    "permissionTypeCode": "MANAGE"
+  },
+  {
+    "id": "139eabf4-2c47-4a5b-9e5f-6e10c7a6b943",
+    "code": "roles:access",
+    "description": "Permite acceder al módulo de roles.",
+    "permissionTypeCode": "FEATURE"
+  },
+  {
+    "id": "5e2fae11-2b7e-4b9e-a4e0-f26f63d7d10c",
+    "code": "roles:create",
+    "description": "Permite crear roles dentro del tenant.",
+    "permissionTypeCode": "CRUD"
+  },
+  {
+    "id": "44b0f83a-5fd7-4d59-9b94-6a1a9a4c0a8a",
+    "code": "roles:read",
+    "description": "Permite leer roles del tenant.",
+    "permissionTypeCode": "CRUD"
+  },
+  {
+    "id": "9e24bfb8-06ad-4d61-9c1a-4938f7f9a50f",
+    "code": "roles:update",
+    "description": "Permite actualizar roles del tenant.",
+    "permissionTypeCode": "CRUD"
+  },
+  {
+    "id": "d5c8a931-3df4-44f4-b258-7e9d8bfa6c3e",
+    "code": "roles:delete",
+    "description": "Permite eliminar roles del tenant.",
+    "permissionTypeCode": "CRUD"
+  },
+  {
+    "id": "88fdc5cb-63d0-42ff-ae5f-410df0a0f379",
+    "code": "roles:manage",
+    "description": "Permite gestionar todos los aspectos de roles.",
+    "permissionTypeCode": "MANAGE"
+  },
+  {
+    "id": "aab6e8a5-bc4e-4f59-87af-21981d47b7b9",
+    "code": "sessions:read",
+    "description": "Permite ver sesiones activas de usuarios.",
+    "permissionTypeCode": "SYSTEM"
+  },
+  {
+    "id": "e0c49b65-89d8-4a3c-a18d-0a32f6b71888",
+    "code": "sessions:terminate",
+    "description": "Permite cerrar sesiones activas de otros usuarios.",
+    "permissionTypeCode": "SYSTEM"
+  },
+  {
+    "id": "fbab6e0f-0ff2-4d82-a70c-48b65e65a1b1",
+    "code": "audit:read",
+    "description": "Permite leer los registros de auditoría del tenant.",
+    "permissionTypeCode": "AUDIT"
+  },
+  {
+    "id": "c7b0ff7b-1d2a-4b93-9d26-4d0a06a2af17",
+    "code": "audit:export",
+    "description": "Permite exportar registros de auditoría del tenant.",
+    "permissionTypeCode": "AUDIT"
+  },
+  {
+    "id": "6ac1f6d1-98c9-4975-95a8-013dcdce0d87",
+    "code": "settings:update",
+    "description": "Permite modificar configuraciones generales del tenant.",
+    "permissionTypeCode": "SYSTEM"
+  }
+]

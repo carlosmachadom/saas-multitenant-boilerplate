@@ -1,0 +1,112 @@
+[
+  {
+    "id": "c1f7e9a3-8b2d-4e5f-b9a7-1f2c3d4e5f6a",
+    "code": "CREATE",
+    "description": "Creación de un recurso."
+  },
+  {
+    "id": "b4e9f1c2-7a5d-4e8b-b3f6-2d1a3c4b5f7e",
+    "code": "READ",
+    "description": "Consulta o visualización de un recurso."
+  },
+  {
+    "id": "d6f1e2b3-4c7a-4f8b-b9c3-5d7e8f9a0b1c",
+    "code": "UPDATE",
+    "description": "Modificación de un recurso."
+  },
+  {
+    "id": "e7f2b3c4-5d8a-4f9b-b0c1-6e7f8a9b1c2d",
+    "code": "DELETE",
+    "description": "Eliminación de un recurso."
+  },
+  {
+    "id": "f8a3c4d5-6e9b-4f0c-b1d2-7f8a9b0c1d2e",
+    "code": "EXPORT",
+    "description": "Exportación de datos de un recurso."
+  },
+  {
+    "id": "a9b4c5d6-7f0e-4a1b-c2d3-8f9a0b1c2d3e",
+    "code": "IMPORT",
+    "description": "Importación de datos de un recurso."
+  },
+  {
+    "id": "b0c1d2e3-8f9a-4b5c-b6d7-9e0a1b2c3d4e",
+    "code": "EXECUTE",
+    "description": "Ejecución de un flujo o automatización."
+  },
+  {
+    "id": "c2d3e4f5-9a0b-4c6d-b7e8-0f1a2b3c4d5e",
+    "code": "SCHEDULE",
+    "description": "Programación de un flujo o tarea."
+  },
+  {
+    "id": "d3e4f5a6-0b1c-4d7e-b8f9-1a2b3c4d5e6f",
+    "code": "RUN_SUCCESS",
+    "description": "Ejecución exitosa de un flujo o tarea."
+  },
+  {
+    "id": "e4f5a6b7-1c2d-4e8f-b9a0-2b3c4d5e6f7a",
+    "code": "RUN_FAILURE",
+    "description": "Fallo en la ejecución de un flujo o tarea."
+  },
+  {
+    "id": "f5a6b7c8-2d3e-4f9a-b0c1-3c4d5e6f7a8b",
+    "code": "LOGIN",
+    "description": "Inicio de sesión exitoso."
+  },
+  {
+    "id": "a6b7c8d9-3e4f-40ab-b1c2-4d5e6f7a8b9c",
+    "code": "LOGOUT",
+    "description": "Cierre de sesión."
+  },
+  {
+    "id": "b7c8d9e0-4f50-41bc-b2d3-5e6f7a8b9c0d",
+    "code": "FAILED_LOGIN",
+    "description": "Intento fallido de inicio de sesión."
+  },
+  {
+    "id": "c8d9e0f1-5061-42cd-b3e4-6f7a8b9c0d1e",
+    "code": "PASSWORD_CHANGE",
+    "description": "Cambio de contraseña."
+  },
+  {
+    "id": "d9e0f1a2-6172-43de-b4f5-7a8b9c0d1e2f",
+    "code": "PASSWORD_RESET",
+    "description": "Restablecimiento de contraseña."
+  },
+  {
+    "id": "e0f1a2b3-7283-44ef-b506-8b9c0d1e2f3a",
+    "code": "SESSION_TERMINATE",
+    "description": "Terminación forzada de una sesión."
+  },
+  {
+    "id": "f1a2b3c4-8394-450f-b617-9c0d1e2f3a4b",
+    "code": "ACCESS_DENIED",
+    "description": "Intento de acceso no autorizado."
+  },
+  {
+    "id": "a2b3c4d5-94a5-4610-b728-0d1e2f3a4b5c",
+    "code": "ASSIGN_ROLE",
+    "description": "Asignación de un rol a un usuario."
+  },
+  {
+    "id": "b3c4d5e6-a5b6-4721-b839-1e2f3a4b5c6d",
+    "code": "REVOKE_ROLE",
+    "description": "Revocación de un rol a un usuario."
+  },
+  {
+    "id": "c4d5e6f7-b6c7-4832-b94a-2f3a4b5c6d7e",
+    "code": "UPDATE_SETTINGS",
+    "description": "Actualización de la configuración global o de un tenant."
+  },
+  {
+    "id": "d5e6f7a8-c7d8-4943-ba5b-3a4b5c6d7e8f",
+    "code": "AUDIT_VIEW",
+    "description": "Visualización de registros de auditoría."
+  },
+  {
+    "id": "e6f7a8b9-d8e9-4a54-bc6d-4b5c6d7e8f90",
+    "code": "AUDIT_EXPORT",
+    "description": "Exportación de registros de auditoría."
+  }
+]

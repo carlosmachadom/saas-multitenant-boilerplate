@@ -1,0 +1,74 @@
+[
+  {
+    "id": "3d6f0a54-9b4b-4e3f-8c61-bf2f4a6b6d01",
+    "name": "ADMIN",
+    "description": "Administrador del tenant con acceso completo a todos los módulos y configuraciones.",
+    "permissionCodes": [
+      "users:access",
+      "users:create",
+      "users:read",
+      "users:update",
+      "users:delete",
+      "users:manage",
+      "roles:access",
+      "roles:create",
+      "roles:read",
+      "roles:update",
+      "roles:delete",
+      "roles:manage",
+      "session:read",
+      "session:terminate",
+      "audit:read",
+      "audit:export",
+      "settings:update",
+      "profile:read",
+      "profile:update",
+      "password:change",
+      "sessions:read:own",
+      "sessions:terminate:own"
+    ]
+  },
+  {
+    "id": "2b1f9e8d-4e6a-4e9d-9a35-8c2e2dbb9e7f",
+    "name": "MANAGER",
+    "description": "Gestor con control de usuarios y roles, pero sin acceso a configuraciones críticas ni auditoría.",
+    "permissionCodes": [
+      "users:access",
+      "users:create",
+      "users:read",
+      "users:update",
+      "roles:access",
+      "roles:read",
+      "roles:update",
+      "sessions:read",
+      "sessions:read:own",
+      "sessions:terminate:own",
+      "profile:read",
+      "profile:update",
+      "password:change"
+    ]
+  },
+  {
+    "id": "9eabf73a-1a48-41b0-bc5c-19c4ad6d1c7f",
+    "name": "USER",
+    "description": "Usuario estándar, puede usar los módulos básicos, pero no administrar usuarios ni roles.",
+    "permissionCodes": [
+      "sessions:read:own",
+      "sessions:terminate:own",
+      "profile:read",
+      "profile:update",
+      "password:change"
+    ]
+  },
+  {
+    "id": "7c2f84b6-b92a-4d18-b6f0-ec6b453df8e2",
+    "name": "VIEWER",
+    "description": "Usuario con acceso limitado de solo lectura.",
+    "permissionCodes": [
+      "sessions:read:own",
+      "audit:read",
+      "profile:read",
+      "password:change"
+    ]
+  }
+]

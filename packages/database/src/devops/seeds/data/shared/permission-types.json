@@ -1,0 +1,32 @@
+[
+  {
+    "id": "8d1a7f4b-2a2e-4b4c-9b1e-13d4fbc2a3c1",
+    "code": "CRUD",
+    "description": "Operaciones atómicas de creación, lectura, actualización y eliminación sobre recursos."
+  },
+  {
+    "id": "c6e02b5e-6f28-41b6-8e64-7d19336c6e15",
+    "code": "MANAGE",
+    "description": "Permisos compuestos que agrupan varias operaciones CRUD."
+  },
+  {
+    "id": "4c8a6a6f-3b87-4e3e-9c27-8c02bde1cf90",
+    "code": "SYSTEM",
+    "description": "Permisos relacionados con configuración crítica del tenant."
+  },
+  {
+    "id": "9e7f64f3-5b64-4c1a-bec6-4d623c993bb3",
+    "code": "AUDIT",
+    "description": "Permisos para acceder a logs de auditoría."
+  },
+  {
+    "id": "b82d9e17-2db9-4c45-8c72-47a44b3a8f3d",
+    "code": "FEATURE",
+    "description": "Permisos para habilitar o restringir el acceso a módulos o integraciones específicas."
+  },
+  {
+    "id": "d92e8f4a-5c3b-4e8d-9a2b-7f6e5d4c3b2a",
+    "code": "SELF",
+    "description": "Permisos de autogestión que solo aplican al propio usuario."
+  }
+]
