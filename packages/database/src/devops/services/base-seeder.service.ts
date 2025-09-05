@@ -8,6 +8,7 @@ import {
   TokenRevocationReasonEntity,
   AuditActionEntity,
   AuditResourceEntity,
+  RoleTypeEntity,
 } from "@core/entities";
 
 import {
@@ -15,6 +16,7 @@ import {
   AuditResource,
   Permission,
   PermissionType,
+  RoleType,
   TokenRevocationReason,
 } from "@workspace/contracts";
 import { PermissionSeeder } from "./seeder-types";
@@ -40,11 +42,12 @@ export class BaseSeederService {
 
     console.log("🔄 Seeding datos compartidos...");
 
-    await this.seedPermissionTypes(manager);
-    await this.seedPermissions(manager);
-    await this.seedTokenRevocationReasons(manager);
     await this.seedAuditActions(manager);
     await this.seedAuditResources(manager);
+    await this.seedPermissionTypes(manager);
+    await this.seedRoleTypes(manager);
+    await this.seedPermissions(manager);
+    await this.seedTokenRevocationReasons(manager);
 
     this.isInitialized = true;
     console.log("✅ Datos compartidos completados.");
@@ -62,15 +65,29 @@ export class BaseSeederService {
     await SeederUtils.seedEntity(repository, data, "permission types");
   }
 
+  private async seedRoleTypes(manager: EntityManager): Promise<void> {
+    const repository = manager.getRepository(RoleTypeEntity);
+    const data = SeederUtils.readJsonFile<RoleType>(
+      "shared/role-types.json"
+    );
+    await SeederUtils.seedEntity(repository, data, "admin role types");
+  }
+
   private async seedPermissions(manager: EntityManager): Promise<void> {
     const permissionRepository = manager.getRepository(PermissionEntity);
     const permissionTypeRepository =
       manager.getRepository(PermissionTypeEntity);
+    const auditResourceRepository = manager.getRepository(AuditResourceEntity);
 
     const permissionTypes = await permissionTypeRepository.find();
+    const auditResources = await auditResourceRepository.find();
 
     const permissionTypeMap = new Map(
       permissionTypes.map((pt) => [pt.code, pt])
+    );
+
+    const auditResourceMap = new Map(
+      auditResources.map((ar) => [ar.name, ar])
     );
 
     const rawData = SeederUtils.readJsonFile<PermissionSeeder>(
@@ -88,11 +105,25 @@ export class BaseSeederService {
         );
       }
 
-      const { permissionTypeCode, ...permissionData } = permission;
+      let auditResource = null;
+      if (permission.auditResourceName) {
+        auditResource = auditResourceMap.get(permission.auditResourceName);
+        
+        if (!auditResource) {
+          throw new Error(
+            `Audit resource '${permission.auditResourceName}' not found for permission '${permission.code}'`
+          );
+        }
+      }
+
+      const { permissionTypeCode, auditResourceName, ...permissionData } = permission;
 
       return {
         ...permissionData,
+        permissionTypeId: permissionType.id,
         permissionType,
+        auditResourceId: auditResource?.id,
+        auditResource,
       };
     });
 

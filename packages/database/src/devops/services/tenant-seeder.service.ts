@@ -4,11 +4,12 @@ import {
   PermissionEntity,
   PermissionTypeEntity,
   RoleEntity,
+  RoleTypeEntity,
 } from "@core/entities";
 import { SeederUtils } from "@devops/services/seeder-utils";
 import { BaseSeederService } from "./base-seeder.service";
 import { PermissionSeeder, RoleSeeder } from "@devops/services/seeder-types";
-import { AuditResource } from "@workspace/contracts";
+import { AuditResource, RoleType } from "@workspace/contracts";
 
 export class TenantSeederService {
   private readonly dataSource: DataSource;
@@ -36,11 +37,13 @@ export class TenantSeederService {
 
       // 1. Semillas compartidas primero
       await this.baseSeeder.seedSharedData(queryRunner.manager);
+      await this.baseSeeder.reset();
 
       // 2. Semillas específicas de tenants
+      await this.seedAuditResources(queryRunner.manager);
+      await this.seedRoleTypes(queryRunner.manager);
       await this.seedPermissions(queryRunner.manager);
       await this.seedRoles(queryRunner.manager);
-      await this.seedAuditResources(queryRunner.manager);
 
       await queryRunner.commitTransaction();
       console.log(
@@ -60,19 +63,25 @@ export class TenantSeederService {
   }
 
   /**
-   * Semillas de permisos específicos de tenants (con transformación para permissionType)
+   * Semillas de permisos específicos de tenants (con transformación para permissionType y auditResource)
    */
   private async seedPermissions(manager: EntityManager): Promise<void> {
     const permissionRepository = manager.getRepository(PermissionEntity);
     const permissionTypeRepository =
       manager.getRepository(PermissionTypeEntity);
+    const auditResourceRepository = manager.getRepository(AuditResourceEntity);
 
-    // 1. Obtener todos los tipos de permiso de la BD
+    // 1. Obtener todos los tipos de permiso y audit resources de la BD
     const permissionTypes = await permissionTypeRepository.find();
+    const auditResources = await auditResourceRepository.find();
 
-    // 2. Crear mapa de código -> entidad
+    // 2. Crear mapas de código -> entidad
     const permissionTypeMap = new Map(
       permissionTypes.map((pt) => [pt.code, pt])
+    );
+
+    const auditResourceMap = new Map(
+      auditResources.map((ar) => [ar.name, ar])
     );
 
     // 3. Leer data del archivo
@@ -80,7 +89,7 @@ export class TenantSeederService {
       "tenants/permissions.json"
     );
 
-    // 4. Transformar: asignar permissionType y quitar permissionTypeCode
+    // 4. Transformar: asignar permissionType, auditResource y quitar códigos
     const transformedData = rawData.map((permission) => {
       const permissionType = permissionTypeMap.get(
         permission.permissionTypeCode
@@ -92,11 +101,25 @@ export class TenantSeederService {
         );
       }
 
-      const { permissionTypeCode, ...permissionData } = permission;
+      let auditResource = null;
+      if (permission.auditResourceName) {
+        auditResource = auditResourceMap.get(permission.auditResourceName);
+        
+        if (!auditResource) {
+          throw new Error(
+            `Audit resource '${permission.auditResourceName}' not found for permission '${permission.code}'`
+          );
+        }
+      }
+
+      const { permissionTypeCode, auditResourceName, ...permissionData } = permission;
 
       return {
         ...permissionData,
+        permissionTypeId: permissionType.id,
         permissionType,
+        auditResourceId: auditResource?.id,
+        auditResource,
       };
     });
 
@@ -109,22 +132,37 @@ export class TenantSeederService {
   }
 
   /**
-   * Semillas de roles específicos de tenants (con transformación para permissions)
+   * Semillas de roles específicos de tenants (con transformación para permissions y roleType)
    */
   private async seedRoles(manager: EntityManager): Promise<void> {
     const roleRepository = manager.getRepository(RoleEntity);
     const permissionRepository = manager.getRepository(PermissionEntity);
+    const roleTypeRepository = manager.getRepository(RoleTypeEntity);
 
-    // 1. Leer data del archivo
+    // 1. Obtener todos los tipos de rol de la BD
+    const roleTypes = await roleTypeRepository.find();
+    const roleTypeMap = new Map(
+      roleTypes.map((rt) => [rt.code, rt])
+    );
+
+    // 2. Leer data del archivo
     const rawData = SeederUtils.readJsonFile<RoleSeeder>("tenants/roles.json");
 
-    // 2. Transformar: asignar permissions y quitar permissionCodes
+    // 3. Transformar: asignar permissions, roleType y quitar códigos
     const transformedData = [];
 
     for (const roleData of rawData) {
       const existingRole = await roleRepository.findOneBy({ id: roleData.id });
 
       if (!existingRole) {
+        // Buscar role type por código
+        const roleType = roleTypeMap.get(roleData.roleTypeCode);
+        if (!roleType) {
+          throw new Error(
+            `Role type '${roleData.roleTypeCode}' not found for role '${roleData.name}'`
+          );
+        }
+
         // Buscar permisos por códigos
         const permissions = await permissionRepository.find({
           where: { code: In(roleData.permissionCodes) },
@@ -142,23 +180,33 @@ export class TenantSeederService {
           );
         }
 
-        // Quitar permissionCodes y agregar permissions
-        const { permissionCodes, ...entityData } = roleData;
+        // Quitar códigos y agregar entidades relacionadas
+        const { permissionCodes, roleTypeCode, ...entityData } = roleData;
 
         transformedData.push({
           ...entityData,
+          roleTypeId: roleType.id,
+          type: roleType,
           permissions,
         });
       }
     }
 
-    // 3. Crear y guardar roles
+    // 4. Crear y guardar roles
     for (const roleData of transformedData) {
       const newRole = roleRepository.create(roleData);
       await roleRepository.save(newRole);
     }
 
     console.log(`-> Seeded ${transformedData.length} tenant roles.`);
+  }
+
+  private async seedRoleTypes(manager: EntityManager): Promise<void> {
+    const repository = manager.getRepository(RoleTypeEntity);
+    const data = SeederUtils.readJsonFile<RoleType>(
+      "tenants/role-types.json"
+    );
+    await SeederUtils.seedEntity(repository, data, "tenant role types");
   }
 
   private async seedAuditResources(manager: EntityManager): Promise<void> {
