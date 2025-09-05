@@ -1,0 +1,17 @@
+[
+  {
+    "id": "dc376d46-8b27-4d7a-9f6d-396ca519277e",
+    "code": "BUSINESS",
+    "description": "Roles funcionales específicos para el negocio"
+  },
+  {
+    "id": "26c34d8d-2717-47ee-97a8-a8aead128849",
+    "code": "DEPARTMENT",
+    "description": "Roles por área o departamento"
+  },
+  {
+    "id": "afe80c3d-dedb-47ad-ace1-1409e8884eaa",
+    "code": "CUSTOM",
+    "description": "Roles personalizados"
+  }
+]

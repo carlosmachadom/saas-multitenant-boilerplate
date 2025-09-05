@@ -1,27 +1,27 @@
 [
   {
     "id": "b617d4f5-932c-4b6f-b5f4-fb39b9af5d73",
-    "code": "USER",
+    "name": "USER",
     "description": "Gestión de usuarios."
   },
   {
     "id": "1d0e8b12-3f1b-4e9f-b214-45b39b5d6c2a",
-    "code": "ROLE",
+    "name": "ROLE",
     "description": "Gestión de roles."
   },
   {
     "id": "7e2f6a3d-5c7a-4f3b-a815-b36f9f84c3d2",
-    "code": "SESSION",
+    "name": "SESSION",
     "description": "Gestión de sesiones de usuarios."
   },
   {
     "id": "e3f1a4c2-7b9d-4e8a-b5f6-2c3a4e5f7b8d",
-    "code": "AUDIT",
+    "name": "AUDIT",
     "description": "Acceso a registros de auditoría (solo admin)."
   },
   {
     "id": "f7d3a8c2-5b1e-4d6a-9e7c-6f1d3a2c4b8e",
-    "code": "SETTINGS",
+    "name": "SETTINGS",
     "description": "Gestión de configuración global (solo admin)."
   }
 ]

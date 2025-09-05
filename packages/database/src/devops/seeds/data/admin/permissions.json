@@ -3,36 +3,42 @@
         "id": "1a2b3c4d-5e6f-4a5b-9c8d-7e6f5a4b3c2d",
         "code": "tenants:access",
         "description": "Permite acceder al módulo de tenants.",
-        "permissionTypeCode": "FEATURE"
+        "permissionTypeCode": "FEATURE",
+        "auditResourceName": "TENANT"
     },
     {
         "id": "2b3c4d5e-6f7a-5b6c-8d9e-0f1a2b3c4d5e",
         "code": "tenants:create",
         "description": "Permite crear tenants.",
-        "permissionTypeCode": "CRUD"
+        "permissionTypeCode": "CRUD",
+        "auditResourceName": "TENANT"
     },
     {
         "id": "3c4d5e6f-7a8b-6c7d-9e0f-1a2b3c4d5e6f",
         "code": "tenants:read",
         "description": "Permite leer información de tenants.",
-        "permissionTypeCode": "CRUD"
+        "permissionTypeCode": "CRUD",
+        "auditResourceName": "TENANT"
     },
     {
         "id": "4d5e6f7a-8b9c-7d8e-0f1a-2b3c4d5e6f7a",
         "code": "tenants:update",
         "description": "Permite actualizar información de tenants.",
-        "permissionTypeCode": "CRUD"
+        "permissionTypeCode": "CRUD",
+        "auditResourceName": "TENANT"
     },
     {
         "id": "5e6f7a8b-9c0d-8e9f-1a2b-3c4d5e6f7a8b",
         "code": "tenants:delete",
         "description": "Permite eliminar tenants.",
-        "permissionTypeCode": "CRUD"
+        "permissionTypeCode": "CRUD",
+        "auditResourceName": "TENANT"
     },
     {
         "id": "6f7a8b9c-0d1e-9f0a-2b3c-4d5e6f7a8b9c",
         "code": "tenants:manage",
         "description": "Permite gestionar todos los aspectos de tenants.",
-        "permissionTypeCode": "MANAGE"
+        "permissionTypeCode": "MANAGE",
+        "auditResourceName": "TENANT"
     }
 ]

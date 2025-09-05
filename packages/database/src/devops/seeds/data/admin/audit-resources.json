@@ -1,7 +1,7 @@
 [
   {
     "id": "3e1e60e7-2f74-4a5c-b51c-4ef84f3f8121",
-    "code": "TENANT",
+    "name": "TENANT",
     "description": "Gestión de tenants en la plataforma."
   }
 ]
