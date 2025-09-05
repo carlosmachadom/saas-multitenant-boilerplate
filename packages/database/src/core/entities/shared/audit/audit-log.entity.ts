@@ -13,11 +13,9 @@ import { AuditActionEntity } from "./audit-action.entity";
 import { AuditResourceEntity } from "./audit-resource.entity";
 
 @Entity({ name: "audit_logs" })
-@Index(["entityId"])
-@Index(["createdAt"])
-@Index(["userId"])
-@Index(["actionId"])
-@Index(["resourceId"])
+@Index(["userId", "createdAt"])
+@Index(["resourceId", "actionId"])
+@Index(["entityId", "createdAt"])
 export class AuditLogEntity implements AuditLog {
   @PrimaryColumn("uuid")
   id: string;

@@ -1,5 +1,6 @@
 import { AuditAction } from "@workspace/contracts";
-import { Entity, PrimaryColumn, Column } from "typeorm";
+import { Entity, PrimaryColumn, Column, OneToMany } from "typeorm";
+import { AuditLogEntity } from "./audit-log.entity";
 
 @Entity({ name: "audit_actions" })
 export class AuditActionEntity implements AuditAction {
@@ -11,4 +12,7 @@ export class AuditActionEntity implements AuditAction {
 
   @Column("varchar", { nullable: true })
   description: string;
+
+  @OneToMany(() => AuditLogEntity, (auditLog) => auditLog.action)
+  auditLogs: AuditLogEntity[]
 }

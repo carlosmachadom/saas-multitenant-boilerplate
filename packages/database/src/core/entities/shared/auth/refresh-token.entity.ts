@@ -1,4 +1,4 @@
-import { RefreshToken } from '@workspace/contracts';
+import { RefreshToken } from "@workspace/contracts";
 import {
   Entity,
   PrimaryColumn,
@@ -6,32 +6,35 @@ import {
   CreateDateColumn,
   OneToOne,
   JoinColumn,
-} from 'typeorm';
-import { SessionEntity } from './session.entity';
+  ManyToOne,
+  Index,
+} from "typeorm";
+import { SessionEntity } from "./session.entity";
 
-@Entity({ name: 'refresh_tokens' })
+@Entity({ name: "refresh_tokens" })
+@Index(["sessionId", "revoked", "expiresAt"])
 export class RefreshTokenEntity implements RefreshToken {
-  @PrimaryColumn('uuid')
+  @PrimaryColumn("uuid")
   id: string;
 
-  @Column('uuid', { name: 'session_id' })
+  @Column("uuid", { name: "session_id" })
   sessionId: string;
 
-  @Column('varchar', { length: 500 })
+  @Column("varchar", { length: 500 })
   token: string;
 
-  @Column({ name: 'expires_at', type: 'timestamp with time zone' })
+  @Column({ name: "expires_at", type: "timestamp with time zone" })
   expiresAt: Date;
 
-  @CreateDateColumn({ name: 'created_at', type: 'timestamp with time zone' })
+  @CreateDateColumn({ name: "created_at", type: "timestamp with time zone" })
   createdAt: Date;
 
-  @Column('boolean', { default: false })
+  @Column("boolean", { default: false })
   revoked: boolean;
 
   // --- Relaciones ---
 
-  @OneToOne(() => SessionEntity, (session) => session.refreshToken)
-  @JoinColumn({ name: 'session_id' })
+  @ManyToOne(() => SessionEntity, (session) => session.refreshTokens)
+  @JoinColumn({ name: "session_id" })
   session: SessionEntity;
 }

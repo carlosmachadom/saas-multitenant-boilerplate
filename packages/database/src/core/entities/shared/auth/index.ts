@@ -2,6 +2,7 @@ export * from "./permission.entity";
 export * from "./permission-type.entity";
 export * from "./profile.entity";
 export * from "./refresh-token.entity";
+export * from "./role-type.entity";
 export * from "./role.entity";
 export * from "./session.entity";
 export * from "./token-blacklist.entity";

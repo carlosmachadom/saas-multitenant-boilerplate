@@ -14,6 +14,7 @@ import {
 import { ProfileEntity } from './profile.entity';
 import { RoleEntity } from './role.entity';
 import { SessionEntity } from './session.entity';
+import { AuditLogEntity } from '../audit';
 
 @Entity({ name: 'users' })
 export class UserEntity implements User {
@@ -53,4 +54,7 @@ export class UserEntity implements User {
 
   @OneToMany(() => SessionEntity, (session: SessionEntity) => session.user)
   sessions: SessionEntity[];
+
+  @OneToMany(() => AuditLogEntity, (auditLog: AuditLogEntity) => auditLog.user)
+  auditLogs: AuditLogEntity[];
 }
