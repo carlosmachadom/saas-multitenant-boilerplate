@@ -8,6 +8,8 @@ import { IdentitySchema } from '../../../base';
 export const PermissionSchema = IdentitySchema.extend({
   code: z.string(), // ej. 'users:create', 'invoices:read'
   description: z.string().optional(),
+  permissionTypeId: z.string().uuid(),
+  auditResourceId: z.string().uuid().optional(),
 });
 
 export type Permission = z.infer<typeof PermissionSchema>;

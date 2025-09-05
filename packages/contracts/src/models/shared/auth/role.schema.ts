@@ -8,6 +8,7 @@ import { IdentitySchema } from '../../../base';
 export const RoleSchema = IdentitySchema.extend({
   name: z.string().min(3, 'El nombre del rol debe tener al menos 3 caracteres'),
   description: z.string().optional(),
+  roleTypeId: z.string().uuid(),
 });
 
 export type Role = z.infer<typeof RoleSchema>;
