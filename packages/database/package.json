@@ -31,7 +31,8 @@
     "pg": "^8.11.3",
     "reflect-metadata": "^0.2.2",
     "typeorm": "^0.3.17",
-    "uuid": "^11.1.0"
+    "uuid": "^11.1.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
